@@ -1,2 +1,5 @@
-package serenitylabs.tutorials.vetclinic.domain;public interface OfColour {
+package serenitylabs.tutorials.vetclinic.domain;
+
+public interface OfColour {
+    DogBuilder ofColour(String colour);
 }
