@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Capabilities;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -18,13 +19,14 @@ public class WhenAddingATodoItem {
         WebDriver driver = new ChromeDriver();
         driver.get("https://todomvc.com/examples/angularjs/#/");
 
-        WebElement search = driver.findElement(By.xpath("//input[@placeholder='What needs to be done?']"));
+        WebElement search = driver.findElement(By.xpath("//input[@ng-model='newTodo']"));
         search.sendKeys("Buy some milk");
         search.sendKeys(Keys.ENTER);
 
-        WebElement list = driver.findElement(By.xpath("//label[@ng-dblclick ='editTodo(todo)'"));
+        WebElement list = driver.findElement(By.xpath("//label[@ng-dblclick ='editTodo(todo)']"));
 
-        assertThat(list.getText(),equalTo("Buy some milk"));
+        assertThat(list.getText(),containsString("Buy some milk"));
+        driver.quit();
 
            }
 
